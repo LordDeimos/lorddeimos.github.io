@@ -177,6 +177,6 @@ app = new Vue({
         titleText:'About Me',
         index:0,
         repos:repos,
-        construction:false
+        construction:true
     }
 });
