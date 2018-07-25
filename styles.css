@@ -1,0 +1,116 @@
+.sidebar{
+    padding: 0.75rem 0 0 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between
+}
+
+html{
+    overflow: hidden;
+}
+body{
+    min-height: 100vh;
+}
+
+ul.menu-list{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.menu-list li{
+    flex: 1;
+    display: flex;
+}
+
+a.sidebar-link{
+    margin: 0;
+    padding: 0;
+    border:0;
+    color:hsl(0, 0%, 98%);
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+a.sidebar-link:hover, .selected{
+    background: whitesmoke;
+    color : hsl(0, 0%, 48%)
+}
+
+div.columns{
+    height: 100vh;
+}
+
+footer a svg.fa-vuejs{
+    color: whitesmoke;
+}
+footer a svg.fa-vuejs:hover{
+    color: #42b883;
+}
+
+footer a svg.jq{
+    fill: whitesmoke;
+}
+footer a svg.jq:hover{
+    fill: #0868AC;
+}
+
+footer a svg.fa-circle{
+    color: hsl(0, 0%, 48%);
+}
+footer a svg.fa-circle:hover{
+    color: #35495e;
+}
+
+.bgi{
+    background-image:url("https://images.pexels.com/photos/270404/pexels-photo-270404.jpeg?cs=srgb&dl=code-coder-coding-270404.jpg&fm=jpg");
+    background-size: 100vw 100vh;
+    background-repeat: no-repeat;
+}
+
+div.info{
+    display:flex;
+    flex:1;
+    flex-direction:column;
+    background-color:whitesmoke;
+    border-radius:6px;
+    align-content: center;
+    padding-left: 10%;
+    padding-top: 3%;
+}
+
+ul.skill-list, ul.repo-list{
+    list-style: none;
+    margin-left: 0;
+    width:60%;
+    display: flex;
+    flex-direction: column;
+}
+
+ul.skill-list li, ul.repo-list li{
+    display: inline-flex;
+    align-items: center;
+    padding: 2%;
+    min-width:40%;
+}
+
+ul.skill-list li h4, ul.repo-list li h4, ul.skill-list li h4, ul.repo-list li p{
+    margin-bottom: 0;
+    padding-left: 2%;
+}
+
+.construction{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+    font-size: 2em;
+}
+
+.fa-spin.reverse{
+    -webkit-animation: fa-spin 2s infinite linear reverse;
+    animation: fa-spin 2s infinite linear reverse;
+}
