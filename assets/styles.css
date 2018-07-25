@@ -43,25 +43,28 @@ div.columns{
     height: 100vh;
 }
 
-footer a svg.fa-vuejs{
+footer a svg.fa-vuejs, footer a svg.fa-font-awesome-flag{
     color: whitesmoke;
 }
+
+footer a svg.dev, footer a svg.jq{
+    fill:whitesmoke;
+}
+
 footer a svg.fa-vuejs:hover{
     color: #42b883;
 }
 
-footer a svg.jq{
-    fill: whitesmoke;
-}
 footer a svg.jq:hover{
     fill: #0868AC;
 }
 
-footer a svg.fa-circle{
-    color: hsl(0, 0%, 48%);
+footer a svg.fa-font-awesome-flag:hover{
+    color: #228ae6;
 }
-footer a svg.fa-circle:hover{
-    color: #35495e;
+
+footer a svg.dev:hover{
+    fill: #60be86;;
 }
 
 .bgi{
@@ -113,4 +116,9 @@ ul.skill-list li h4, ul.repo-list li h4, ul.skill-list li h4, ul.repo-list li p{
 .fa-spin.reverse{
     -webkit-animation: fa-spin 2s infinite linear reverse;
     animation: fa-spin 2s infinite linear reverse;
+}
+
+.tech-foot{
+    display: flex;
+    flex-direction: column;
 }
