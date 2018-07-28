@@ -74,7 +74,7 @@ footer a svg.dev:hover{
 }
 
 .bgi{
-    background-image:url("https://images.pexels.com/photos/270404/pexels-photo-270404.jpeg?cs=srgb&dl=code-coder-coding-270404.jpg&fm=jpg");
+    background-image:url("./board-electronics-computer-data-processing-50711.jpeg");
     background-size: 100vw 100vh;
     background-repeat: no-repeat;
 }
@@ -94,6 +94,10 @@ ul.skill-list, ul.repo-list{
     list-style: none;
     margin-left: -1%;
     width:60%;
+    column-count: 2;
+}
+
+ul.repo-list{
     display: flex;
     flex-direction: column;
 }
@@ -137,13 +141,31 @@ ul.skill-list li h4, ul.repo-list li h4, ul.skill-list li h4, ul.repo-list li p{
 }
 
 .fade-down-enter-active, .fade-down-leave-active{
-    transition: opacity 0.3s ease;
+    transition: all 0.5s;
+    transform-origin: 0 0;
+    transform: scaleY(1);
 }
 .fade-down-enter, .fade-down-leave-to{
+    transform: scaleY(0);
     opacity: 0;
 }
 
-.info div.abs{
+.accordian{
+    position: relative;
+    -webkit-transition: max-height 0.5s;
+    -moz-transition: max-height 0.5s;
+    -ms-transition: max-height 0.5s;
+    -o-transition: max-height 0.5s;
+    transition: max-height 0.5s;
+    overflow: hidden;
+}
+
+.accordian.open{
+    height: auto;
+    /*height: calc(4% + 1.25em + 1rem + 3rem);*/
+}
+
+.abs{
     position: absolute;
     width: 100%;
 }
@@ -151,6 +173,7 @@ ul.skill-list li h4, ul.repo-list li h4, ul.skill-list li h4, ul.repo-list li p{
 .catch{
     font-style: italic;
     font-size: 1.2em;
+    padding: 0 20% 0 20%;
 }
 
 .head img{
