@@ -170,7 +170,7 @@ Vue.component('mainpanel',{
                 <p class="abs" v-if="index===0" style="font-size:1.2em">
                 My name is Alex Barnier, a software engineering student at the Queensland Univeristy of Technology. I love to program anything I can think of.
                  In addition to my studies, I became part of
-                the <a href='https://stimulate.qut.edu.au'>STIMulate</a> program, where I have been given the opporunity to gain skills beyond my degree<br/><br/>
+                the <a href='https://stimulate.qut.edu.au' target="_blank">STIMulate</a> program, where I have been given the opporunity to gain skills beyond my degree<br/><br/>
                 I am always looking for new ways to gain knowledge, whether by learing a new programming language, or taking on new leadership responsibilites at university.</p>
             </transition>
             <transition name="fade" mode="out-in"> 
