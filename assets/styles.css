@@ -74,7 +74,7 @@ footer a svg.dev:hover{
 }
 
 .bgi{
-    background-image:url("./board-electronics-computer-data-processing-50711.jpeg");
+    background-image:url("./bg.jpeg");
     background-size: 100vw 100vh;
     background-repeat: no-repeat;
 }
@@ -88,17 +88,18 @@ div.info{
     align-content: center;
     padding-left: 10%;
     padding-top: 3%;
+    padding-right: 10%;
 }
 
 ul.skill-list, ul.repo-list{
     list-style: none;
     margin-left: -1%;
     width:60%;
-    column-count: 2;
+    /*column-count: 2;*/
+    /*display: flex;*/
 }
 
 ul.repo-list{
-    display: flex;
     flex-direction: column;
 }
 
@@ -150,24 +151,9 @@ ul.skill-list li h4, ul.repo-list li h4, ul.skill-list li h4, ul.repo-list li p{
     opacity: 0;
 }
 
-.accordian{
-    position: relative;
-    -webkit-transition: max-height 0.5s;
-    -moz-transition: max-height 0.5s;
-    -ms-transition: max-height 0.5s;
-    -o-transition: max-height 0.5s;
-    transition: max-height 0.5s;
-    overflow: hidden;
-}
-
-.accordian.open{
-    height: auto;
-    /*height: calc(4% + 1.25em + 1rem + 3rem);*/
-}
-
 .abs{
     position: absolute;
-    width: 100%;
+    width: 75%;
 }
 
 .catch{

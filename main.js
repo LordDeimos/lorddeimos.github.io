@@ -21,19 +21,37 @@ $(document).ready(()=>{
             }
         });
     });
+    $(document).keydown((event)=>{
+        var change = false;
+        switch(event.which){
+            case 38:
+                if(app.index>0){
+                    console.log("up")
+                    --app.index;
+                    change = true;
+                }
+                break;
+            case 40:
+                if(app.index<3){
+                    console.log(app.index)
+                    ++app.index;
+                    console.log(app.index)
+                    change = true;
+                }
+                break;
+            default:return;
+        }
+        
+        console.log(app.index)
+        app.buttons.forEach(element => {
+            console.log("yes")
+            if(element.id===app.index&&change){
+                $(`.menu-list>li`)[app.index].click();
+            }
+        });
+    });
 });
 
-var load = function(child){
-    var em = parseFloat($(`#${child.id}`).parent().css('font-size'));
-    var rem = parseFloat($(`html`).css('font-size'));
-    var per = parseFloat($(`html`).width()/100);
-    if(child.active){
-        $(`#${child.id}`).parent().css('max-height',((4*per)+(1.25*em)+$(`#${child.id}`).outerHeight()).toString()+'px');
-    }
-    else{
-        $(`#${child.id}`).parent().css('max-height',(2*per)+(1.25*em)+'px');
-    }
-}
 
 Vue.component('list-button',{
     props:['prop'],
@@ -53,80 +71,6 @@ Vue.component('list-button',{
             });
         }            
     }
-});
-
-Vue.component('prog-langs',{
-    template:`
-    <div>
-        Some of the Languages I have skills in include the following:
-        <p class="skills">
-            <!--C-->
-            <span class="icon is-large">
-                <svg viewBox="0 0 128 128">
-                    <path fill="#659AD3" d="M115.4 30.7l-48.3-27.8c-.8-.5-1.9-.7-3.1-.7-1.2 0-2.3.3-3.1.7l-48 27.9c-1.7 1-2.9 3.5-2.9 5.4v55.7c0 1.1.2 2.4 1 3.5l106.8-62c-.6-1.2-1.5-2.1-2.4-2.7z"></path>
-                    <path fill="#03599C" d="M10.7 95.3c.5.8 1.2 1.5 1.9 1.9l48.2 27.9c.8.5 1.9.7 3.1.7 1.2 0 2.3-.3 3.1-.7l48-27.9c1.7-1 2.9-3.5 2.9-5.4v-55.7c0-.9-.1-1.9-.6-2.8l-106.6 62z"></path>
-                    <path fill="#fff" d="M85.3 76.1c-4.2 7.4-12.2 12.4-21.3 12.4-13.5 0-24.5-11-24.5-24.5s11-24.5 24.5-24.5c9.1 0 17.1 5 21.3 12.5l13-7.5c-6.8-11.9-19.6-20-34.3-20-21.8 0-39.5 17.7-39.5 39.5s17.7 39.5 39.5 39.5c14.6 0 27.4-8 34.2-19.8l-12.9-7.6z"></path>
-                </svg>
-            </span>
-            <!--C++-->
-            <span class="icon is-large">
-                <svg viewBox="0 0 128 128">
-                    <path fill="#D26383" d="M115.4 30.7l-48.3-27.8c-.8-.5-1.9-.7-3.1-.7-1.2 0-2.3.3-3.1.7l-48 27.9c-1.7 1-2.9 3.5-2.9 5.4v55.7c0 1.1.2 2.4 1 3.5l106.8-62c-.6-1.2-1.5-2.1-2.4-2.7z"></path>
-                    <path fill="#9C033A" d="M10.7 95.3c.5.8 1.2 1.5 1.9 1.9l48.2 27.9c.8.5 1.9.7 3.1.7 1.2 0 2.3-.3 3.1-.7l48-27.9c1.7-1 2.9-3.5 2.9-5.4v-55.7c0-.9-.1-1.9-.6-2.8l-106.6 62z"></path>
-                    <path fill="#fff" d="M85.3 76.1c-4.2 7.4-12.2 12.4-21.3 12.4-13.5 0-24.5-11-24.5-24.5s11-24.5 24.5-24.5c9.1 0 17.1 5 21.3 12.5l13-7.5c-6.8-11.9-19.6-20-34.3-20-21.8 0-39.5 17.7-39.5 39.5s17.7 39.5 39.5 39.5c14.6 0 27.4-8 34.2-19.8l-12.9-7.6z"></path>
-                    <path d="M82.1 61.8h5.2v-5.3h4.4v5.3h5.3v4.4h-5.3v5.2h-4.4v-5.2h-5.2v-4.4zM100.6 61.8h5.2v-5.3h4.4v5.3h5.3v4.4h-5.3v5.2h-4.4v-5.2h-5.2v-4.4z"></path>
-                    <path fill="#fff" d="M82.1 61.8h5.2v-5.3h4.4v5.3h5.3v4.4h-5.3v5.2h-4.4v-5.2h-5.2v-4.4zM100.6 61.8h5.2v-5.3h4.4v5.3h5.3v4.4h-5.3v5.2h-4.4v-5.2h-5.2v-4.4z"></path>
-                </svg>
-            </span>
-            <!--C#-->
-            <span class="icon is-large">
-                <svg viewBox="0 0 128 128">
-                    <path fill="#9B4F96" d="M115.4 30.7l-48.3-27.8c-.8-.5-1.9-.7-3.1-.7-1.2 0-2.3.3-3.1.7l-48 27.9c-1.7 1-2.9 3.5-2.9 5.4v55.7c0 1.1.2 2.4 1 3.5l106.8-62c-.6-1.2-1.5-2.1-2.4-2.7z"></path>
-                    <path fill="#68217A" d="M10.7 95.3c.5.8 1.2 1.5 1.9 1.9l48.2 27.9c.8.5 1.9.7 3.1.7 1.2 0 2.3-.3 3.1-.7l48-27.9c1.7-1 2.9-3.5 2.9-5.4v-55.7c0-.9-.1-1.9-.6-2.8l-106.6 62z"></path>
-                    <path fill="#fff" d="M85.3 76.1c-4.2 7.4-12.2 12.4-21.3 12.4-13.5 0-24.5-11-24.5-24.5s11-24.5 24.5-24.5c9.1 0 17.1 5 21.3 12.5l13-7.5c-6.8-11.9-19.6-20-34.3-20-21.8 0-39.5 17.7-39.5 39.5s17.7 39.5 39.5 39.5c14.6 0 27.4-8 34.2-19.8l-12.9-7.6zM97 66.2l.9-4.3h-4.2v-4.7h5.1l1.2-6.2h4.9l-1.2 6.1h3.8l1.2-6.1h4.8l-1.2 6.1h2.4v4.7h-3.3l-.9 4.3h4.2v4.7h-5.1l-1.2 6h-4.9l1.2-6h-3.8l-1.2 6h-4.8l1.2-6h-2.4v-4.7h3.3zm4.8 0h3.8l.9-4.3h-3.8l-.9 4.3z"></path>
-                </svg>
-            </span>
-            <!--Java-->
-            <span class="icon is-large">
-                <svg viewBox="0 0 128 128">
-                    <path fill="#0074BD" d="M47.617 98.12s-4.767 2.774 3.397 3.71c9.892 1.13 14.947.968 25.845-1.092 0 0 2.871 1.795 6.873 3.351-24.439 10.47-55.308-.607-36.115-5.969zM44.629 84.455s-5.348 3.959 2.823 4.805c10.567 1.091 18.91 1.18 33.354-1.6 0 0 1.993 2.025 5.132 3.131-29.542 8.64-62.446.68-41.309-6.336z"></path><path fill="#EA2D2E" d="M69.802 61.271c6.025 6.935-1.58 13.17-1.58 13.17s15.289-7.891 8.269-17.777c-6.559-9.215-11.587-13.792 15.635-29.58 0 .001-42.731 10.67-22.324 34.187z"></path>
-                    <path fill="#0074BD" d="M102.123 108.229s3.529 2.91-3.888 5.159c-14.102 4.272-58.706 5.56-71.094.171-4.451-1.938 3.899-4.625 6.526-5.192 2.739-.593 4.303-.485 4.303-.485-4.953-3.487-32.013 6.85-13.743 9.815 49.821 8.076 90.817-3.637 77.896-9.468zM49.912 70.294s-22.686 5.389-8.033 7.348c6.188.828 18.518.638 30.011-.326 9.39-.789 18.813-2.474 18.813-2.474s-3.308 1.419-5.704 3.053c-23.042 6.061-67.544 3.238-54.731-2.958 10.832-5.239 19.644-4.643 19.644-4.643zM90.609 93.041c23.421-12.167 12.591-23.86 5.032-22.285-1.848.385-2.677.72-2.677.72s.688-1.079 2-1.543c14.953-5.255 26.451 15.503-4.823 23.725 0-.002.359-.327.468-.617z"></path>
-                    <path fill="#EA2D2E" d="M76.491 1.587s12.968 12.976-12.303 32.923c-20.266 16.006-4.621 25.13-.007 35.559-11.831-10.673-20.509-20.07-14.688-28.815 8.548-12.834 32.229-19.059 26.998-39.667z"></path><path fill="#0074BD" d="M52.214 126.021c22.476 1.437 57-.8 57.817-11.436 0 0-1.571 4.032-18.577 7.231-19.186 3.612-42.854 3.191-56.887.874 0 .001 2.875 2.381 17.647 3.331z"></path>
-                </svg>
-            </span>
-            <!--Nodejs-->
-            <span class="icon is-large">
-                <svg viewBox="0 0 128 128">
-                    <path fill="#83CD29" d="M112.771 30.334l-44.097-25.605c-2.781-1.584-6.402-1.584-9.205 0l-44.568 25.605c-2.87 1.651-4.901 4.754-4.901 8.073v51.142c0 3.319 2.084 6.423 4.954 8.083l11.775 6.688c5.628 2.772 7.617 2.772 10.178 2.772 8.333 0 13.093-5.039 13.093-13.828v-50.49c0-.713-.371-1.774-1.071-1.774h-5.623c-.712 0-2.306 1.061-2.306 1.773v50.49c0 3.896-3.524 7.773-10.11 4.48l-12.167-7.013c-.424-.23-.723-.693-.723-1.181v-51.142c0-.482.555-.966.982-1.213l44.424-25.561c.415-.235 1.025-.235 1.439 0l43.882 25.555c.42.253.272.722.272 1.219v51.142c0 .488.183.963-.232 1.198l-44.086 25.576c-.378.227-.847.227-1.261 0l-11.307-6.749c-.341-.198-.746-.269-1.073-.086-3.146 1.783-3.726 2.02-6.677 3.043-.726.253-1.797.692.41 1.929l14.798 8.754c1.417.82 3.027 1.246 4.647 1.246 1.642 0 3.25-.426 4.667-1.246l43.885-25.582c2.87-1.672 4.23-4.764 4.23-8.083v-51.142c0-3.319-1.36-6.414-4.229-8.073zM77.91 81.445c-11.726 0-14.309-3.235-15.17-9.066-.1-.628-.633-1.379-1.272-1.379h-5.731c-.709 0-1.279.86-1.279 1.566 0 7.466 4.059 16.512 23.453 16.512 14.039 0 22.088-5.455 22.088-15.109 0-9.572-6.467-12.084-20.082-13.886-13.762-1.819-15.16-2.738-15.16-5.962 0-2.658 1.184-6.203 11.374-6.203 9.105 0 12.461 1.954 13.842 8.091.118.577.645.991 1.24.991h5.754c.354 0 .692-.143.94-.396.24-.272.367-.613.335-.979-.891-10.568-7.912-15.493-22.112-15.493-12.631 0-20.166 5.334-20.166 14.275 0 9.698 7.497 12.378 19.622 13.577 14.505 1.422 15.633 3.542 15.633 6.395 0 4.955-3.978 7.066-13.309 7.066z"></path>
-                </svg>
-            </span>
-            <!--Python-->
-            <span class="icon is-large">
-                <svg viewBox="0 0 128 128">
-                    <linearGradient id="a" gradientUnits="userSpaceOnUse" x1="70.252" y1="1237.476" x2="170.659" y2="1151.089" gradientTransform="matrix(.563 0 0 -.568 -29.215 707.817)">
-                        <stop offset="0" stop-color="#5A9FD4" />
-                        <stop offset="1" stop-color="#306998" />
-                    </linearGradient>
-                    <path fill="url(#a)" d="M63.391 1.988c-4.222.02-8.252.379-11.8 1.007-10.45 1.846-12.346 5.71-12.346 12.837v9.411h24.693v3.137h-33.961c-7.176 0-13.46 4.313-15.426 12.521-2.268 9.405-2.368 15.275 0 25.096 1.755 7.311 5.947 12.519 13.124 12.519h8.491v-11.282c0-8.151 7.051-15.34 15.426-15.34h24.665c6.866 0 12.346-5.654 12.346-12.548v-23.513c0-6.693-5.646-11.72-12.346-12.837-4.244-.706-8.645-1.027-12.866-1.008zm-13.354 7.569c2.55 0 4.634 2.117 4.634 4.721 0 2.593-2.083 4.69-4.634 4.69-2.56 0-4.633-2.097-4.633-4.69-.001-2.604 2.073-4.721 4.633-4.721z"
-                    />
-                    <linearGradient id="b" gradientUnits="userSpaceOnUse" x1="209.474" y1="1098.811" x2="173.62" y2="1149.537" gradientTransform="matrix(.563 0 0 -.568 -29.215 707.817)">
-                        <stop offset="0" stop-color="#FFD43B" />
-                        <stop offset="1" stop-color="#FFE873" />
-                    </linearGradient>
-                    <path fill="url(#b)" d="M91.682 28.38v10.966c0 8.5-7.208 15.655-15.426 15.655h-24.665c-6.756 0-12.346 5.783-12.346 12.549v23.515c0 6.691 5.818 10.628 12.346 12.547 7.816 2.297 15.312 2.713 24.665 0 6.216-1.801 12.346-5.423 12.346-12.547v-9.412h-24.664v-3.138h37.012c7.176 0 9.852-5.005 12.348-12.519 2.578-7.735 2.467-15.174 0-25.096-1.774-7.145-5.161-12.521-12.348-12.521h-9.268zm-13.873 59.547c2.561 0 4.634 2.097 4.634 4.692 0 2.602-2.074 4.719-4.634 4.719-2.55 0-4.633-2.117-4.633-4.719 0-2.595 2.083-4.692 4.633-4.692z"
-                    />
-                    <radialGradient id="c" cx="1825.678" cy="444.45" r="26.743" gradientTransform="matrix(0 -.24 -1.055 0 532.979 557.576)"
-                        gradientUnits="userSpaceOnUse">
-                        <stop offset="0" stop-color="#B8B8B8" stop-opacity=".498" />
-                        <stop offset="1" stop-color="#7F7F7F" stop-opacity="0" />
-                    </radialGradient>
-                    <path fill="url('#a')" d="M63.391 1.988c-4.222.02-8.252.379-11.8 1.007-10.45 1.846-12.346 5.71-12.346 12.837v9.411h24.693v3.137h-33.961c-7.176 0-13.46 4.313-15.426 12.521-2.268 9.405-2.368 15.275 0 25.096 1.755 7.311 5.947 12.519 13.124 12.519h8.491v-11.282c0-8.151 7.051-15.34 15.426-15.34h24.665c6.866 0 12.346-5.654 12.346-12.548v-23.513c0-6.693-5.646-11.72-12.346-12.837-4.244-.706-8.645-1.027-12.866-1.008zm-13.354 7.569c2.55 0 4.634 2.117 4.634 4.721 0 2.593-2.083 4.69-4.634 4.69-2.56 0-4.633-2.097-4.633-4.69-.001-2.604 2.073-4.721 4.633-4.721z"></path>
-                    <path fill="url('#b')" d="M91.682 28.38v10.966c0 8.5-7.208 15.655-15.426 15.655h-24.665c-6.756 0-12.346 5.783-12.346 12.549v23.515c0 6.691 5.818 10.628 12.346 12.547 7.816 2.297 15.312 2.713 24.665 0 6.216-1.801 12.346-5.423 12.346-12.547v-9.412h-24.664v-3.138h37.012c7.176 0 9.852-5.005 12.348-12.519 2.578-7.735 2.467-15.174 0-25.096-1.774-7.145-5.161-12.521-12.348-12.521h-9.268zm-13.873 59.547c2.561 0 4.634 2.097 4.634 4.692 0 2.602-2.074 4.719-4.634 4.719-2.55 0-4.633-2.117-4.633-4.719 0-2.595 2.083-4.692 4.633-4.692z"></path>
-                    <path opacity=".444" fill="url('#c')" enable-background="new" d="M97.309 119.597c0 3.543-14.816 6.416-33.091 6.416-18.276 0-33.092-2.873-33.092-6.416 0-3.544 14.815-6.417 33.092-6.417 18.275 0 33.091 2.872 33.091 6.417z"></path>
-                </svg>
-            </span>
-        </p>
-    </div>`
 });
 
 Vue.component('sidebar',{
@@ -183,37 +127,15 @@ Vue.component('sidebar',{
             </div>`
 });
 
-Vue.component('skill-child',{
-    props:['child'],
-    template:`
-    <transition name="fade-down" tag="div" mode="out-in">
-        <div v-if="child.active" v-bind:id="child.id" style="margin-top:2%">
-            <prog-langs v-if="child.text==='prog-langs'"></prog-langs>
-            <div :id="child.id" v-else>
-                {{child.text}}
-            </div>
-        </div>
-    </transition>`,
-    mounted:function(){
-        load(this.child);
-    },
-    updated:function(){        
-        load(this.child);
-    }
-});
-
 Vue.component('skill-item',{
-    props:['skill','child','id'],
+    props:['skill','id'],
     template:`
-    <li :id="id" v-on:click="showChild(child,id)" class="accordian" :class="{open:child.active}"
-        style="display:flex;flex-direction:column;align-items:flex-start;max-height:58.4px">
-        <div class="has-icon-left" style="display:flex;flex-direction:row;width:100%">
+    <li :id="id" class="has-icon-left">
             <span class="icon is-left">
                 <i :class="skill.icon"></i>
             </span>
-            <h4>{{ skill.text }}</h4>
+            <h4 style="padding:0 0 0 7%;width:15rem">{{ skill.text }}</h4>
         </div>
-            <skill-child v-bind:child="child"></skill-child>
     </li>`,
     methods:{
         showChild:function(child,id){
@@ -229,8 +151,8 @@ Vue.component('repo-item',{
         <span class="icon is-left">
             <i :class='["fas fa-2x",{"fa-code-branch":repo.fork,"fa-book":!repo.fork}]'></i>
         </span>
-        <div style="dislpay:flex;flex-direction:column;width:100%">
-            <h4><a :href="repo.html_url">{{repo.name}}</a></h4>
+        <div style="dislpay:flex;flex-direction:column;width:100%;padding:2%">
+            <h4><a :href="repo.html_url" target="_blank">{{repo.name}}</a></h4>
             <p>{{repo.description}}</p>
         </div>
     </li>`
@@ -243,32 +165,50 @@ Vue.component('mainpanel',{
         <div style="height:20%"></div>
         <div class="info content is-marginless" style="height:70%; background-color:rgba(255, 255, 255, 0.8)">
             <div class="abs">  
-            <h2>{{text}}</h2>
+            <h1>{{text}}</h1>
             <transition name="fade" mode="out-in">     
-                <p class="abs" v-if="index===0">About Text</p>
+                <p class="abs" v-if="index===0" style="font-size:1.2em">
+                My name is Alex Barnier, a software engineering student at the Queensland Univeristy of Technology. I love to program anything I can think of.
+                 In addition to my studies, I became part of
+                the <a href='stimualte.qut.edu.au'>STIMulate</a> program, where I have been given the opporunity to gain skills beyond my degree<br/><br/>
+                I am always looking for new ways to gain knowledge, whether by learing a new programming language, or taking on new leadership responsibilites at university.</p>
             </transition>
             <transition name="fade" mode="out-in"> 
-                <ul class="abs repo-list" v-if="index===1">
-                    <repo-item v-for="repo in repos" v-if="repo.name!=='lorddeimos.github.io'" v-bind:repo="repo"></repo-item>
-                </ul>
+                <div class="abs" v-if="index===1">
+                    <h5>Here are some of the projects I am working on. I mainly use these as ways to gain skills in areas I am less familliar with.</h5>
+                    <ul class="repo-list">
+                        <repo-item v-for="repo in repos" v-if="repo.name!=='lorddeimos.github.io'" v-bind:repo="repo"></repo-item>
+                    </ul>
+                </div>
+            </transition>
+            <transition name="fade" mode="out-in">
+                <div class="abs" v-if="index===2">
+                    <h5>Through personal interset and university, I have gained skills in both programming and leadership</h5>
+                    <ul class="abs skill-list">
+                        <skill-item v-for="skill in skills" :skill="skill" :id="skill.id" ></skill-item>
+                    </ul>
+                </div>
             </transition>
             <transition name="fade" mode="out-in"> 
-                <ul class="abs skill-list" v-if="index===2">
-                    <skill-item v-for="skill in skills" v-bind:skill="skill" :child="skill.child" :id="skill.id" ></skill-item>
-                </ul>
-            </transition>
-            <transition name="fade" mode="out-in"> 
-                <div class="has-text-centered" v-if="index===3" style="display:flex">
-                    <a href="https://github.com/LorDeimos" target="_blank">
-                        <span class="icon is-large">
-                            <i class="fab fa-github fa-2x"></i>
-                        </span>
-                    </a>
-                    <a href="mailto:alexjbarnier@gmail.com">
-                        <span class="icon is-large">
-                            <i class="fas fa-envelope fa-2x"></i>
-                        </span>
-                    </a>
+                <div v-if="index===3">
+                    <h5>Here are the main points of contact if you wish to reach me:</h5>
+                    <div class="has-text-centered" style="display:flex">                        
+                        <a href="https://github.com/LordDeimos" target="_blank">
+                            <span class="icon is-large">
+                                <i class="fab fa-github fa-2x"></i>
+                            </span>
+                        </a>
+                        <a href="mailto:alexjbarnier@gmail.com">
+                            <span class="icon is-large">
+                                <i class="fas fa-envelope fa-2x"></i>
+                            </span>
+                        </a>
+                        <a href="https://www.linkedin.com/in/alex-barnier-224b81127/">
+                            <span class="icon is-large">
+                                <i class="fab fa-linkedin fa-2x"></i>
+                            </span>
+                        </a>
+                    </div>
                 </div>
             </transition>
         </div>
@@ -278,8 +218,10 @@ Vue.component('mainpanel',{
     data:function(){
         return{
             skills:[
-                {id:"softeng",text:"Software Engineering", icon:"fas fa-2x fa-code",child:{id:"progs",text:"prog-langs",active:true}},
-                {id:"teach",text:"Teaching", icon:"fas fa-2x fa-chalkboard-teacher",child:{id:"teach-c",text:"As part of the STIMulate program I have experience...",active:false}},
+                {id:"softeng",text:"Software Engineer", icon:"fas fa-2x fa-code"},
+                {id:"commun",text:"Effective Comminucator", icon:"fas fa-2x fa-chalkboard-teacher"},
+                {id:"",text:"Problem Solver", icon:"fas fa-2x fa-bolt"},
+                {id:"",text:"Quick Learner", icon:"fas fa-2x fa-graduation-cap"}
             ],
         }
     }
@@ -297,6 +239,6 @@ app = new Vue({
         titleText:'About Me',
         index:0,
         repos:repos,
-        construction:true
+        construction:false
     }
 });
