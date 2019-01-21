@@ -203,7 +203,7 @@ Vue.component('mainpanel',{
                                 <i class="fas fa-envelope fa-2x"></i>
                             </span>
                         </a>
-                        <a href="https://www.linkedin.com/in/alex-barnier-224b81127/">
+                        <a href="https://www.linkedin.com/in/alex-barnier-224b81127/" target-"_blank">
                             <span class="icon is-large">
                                 <i class="fab fa-linkedin fa-2x"></i>
                             </span>

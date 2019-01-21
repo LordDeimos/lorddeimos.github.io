@@ -96,7 +96,7 @@ ul.skill-list, ul.repo-list{
     margin-left: -1%;
     width:60%;
     /*column-count: 2;*/
-    /*display: flex;*/
+    display: flex;
 }
 
 ul.repo-list{
