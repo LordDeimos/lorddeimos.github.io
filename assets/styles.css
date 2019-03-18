@@ -3,7 +3,19 @@
     margin: 0;
     display: flex;
     flex-direction: column;
-    justify-content: space-between
+    justify-content: space-between;
+    overflow: hidden;
+}
+
+.mainarea{
+    display:flex;
+    flex:1;
+    flex-direction:column;
+}
+
+.textbox{
+    padding-bottom:10%;
+    width:80%;
 }
 
 html{
@@ -83,24 +95,20 @@ div.info{
     display:flex;
     flex:1;
     flex-direction:column;
-    background-color:whitesmoke;
     border-radius:6px;
     align-content: center;
     padding-left: 10%;
     padding-top: 3%;
-    padding-right: 10%;
+    height:80%; 
+    overflow-y: scroll;
+    background-color:rgba(255, 255, 255, 0.8);
 }
 
 ul.skill-list, ul.repo-list{
     list-style: none;
     margin-left: -1%;
-    width:60%;
-    /*column-count: 2;*/
+    flex-wrap: wrap;
     display: flex;
-}
-
-ul.repo-list{
-    flex-direction: column;
 }
 
 ul.skill-list li, ul.repo-list li{
@@ -108,6 +116,7 @@ ul.skill-list li, ul.repo-list li{
     align-items: center;
     padding: 2%;
     min-width:40%;
+    flex: 0 0 33.3333%;
 }
 
 ul.skill-list li h4, ul.repo-list li h4, ul.skill-list li h4, ul.repo-list li p{
@@ -132,28 +141,6 @@ ul.skill-list li h4, ul.repo-list li h4, ul.skill-list li h4, ul.repo-list li p{
 .tech-foot{
     display: flex;
     flex-direction: column;
-}
-
-.fade-enter-active, .fade-leave-active{
-    transition: opacity .5s ease;
-}
-.fade-enter, .fade-leave-to{
-    opacity: 0;
-}
-
-.fade-down-enter-active, .fade-down-leave-active{
-    transition: all 0.5s;
-    transform-origin: 0 0;
-    transform: scaleY(1);
-}
-.fade-down-enter, .fade-down-leave-to{
-    transform: scaleY(0);
-    opacity: 0;
-}
-
-.abs{
-    position: absolute;
-    width: 75%;
 }
 
 .catch{
